@@ -1,0 +1,27 @@
+{
+  "name": "friend-finder",
+  "version": "1.0.0",
+  "description": "Find friends",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asconwe/friend-finder.git"
+  },
+  "keywords": [
+    "friends"
+  ],
+  "author": "August",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asconwe/friend-finder/issues"
+  },
+  "homepage": "https://github.com/asconwe/friend-finder#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
+}
