@@ -11,10 +11,6 @@ $(document).ready(function () {
     'The future of Star Wars is brighter than the future of Star Trek'
   ];
   
-  function throwErrorModal() {
-    
-  }
-
   function makeRadioButtons() {
     var radioButtonString = '';
     for (var i = 1; i < 6; i++) {
@@ -28,7 +24,6 @@ $(document).ready(function () {
   });
   
   $('#new-friend').submit(function (e) {
-    e.preventDefault();
     var scores = [];
     var imageUrl = $('#image-url').val();
     var friendName = $('#name').val();
@@ -44,8 +39,9 @@ $(document).ready(function () {
 
       console.log(postObj);
 
-      $.post('/api/friends', postObj).done(function () { 
-        console.log('Should get the best friend match back and display modal');
+      $.post('/api/friends', postObj).done(function (data) { 
+        console.log(data);
+        showFriendModal(data.friendName, data.imageUrl);
       });
 
     }

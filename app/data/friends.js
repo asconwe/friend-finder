@@ -2,7 +2,7 @@ var friends = {
   postFriends: postFriends,
   getFriends: getFriends,
   friendsList: [{
-    name: 'August Conwell',
+    friendName: 'August Conwell',
     imageUrl: 'https://github.com/asconwe/bootstrap-portfolio/blob/master/assets/images/profile.jpg?raw=true',
     scores: [1, 1, 1, 1, 1, 1, 1, 1, 1]
   }]
