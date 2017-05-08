@@ -10,13 +10,17 @@ $(document).ready(function () {
     'Star Wars books are better than Star Trek books',
     'The future of Star Wars is brighter than the future of Star Trek'
   ];
+  
+  function throwErrorModal() {
+    
+  }
 
   function makeRadioButtons() {
     var radioButtonString = '';
     for (var i = 1; i < 6; i++) {
-      radioButtonString += ' <input type="radio" name="agreeDisagree" value="' + i + '"> ' + i;
+      radioButtonString += ' <input class="rd-button" type="radio" name="agreeDisagree" value="' + i + '" /> ' + i;
     }
-    return '<form>' + radioButtonString + '</form>';
+    return '<form class="radio-button">' + radioButtonString + '</form>';
   }
 
   questions.forEach(function (value) { 
@@ -25,18 +29,27 @@ $(document).ready(function () {
   
   $('#new-friend').submit(function (e) {
     e.preventDefault();
-
-    var friendScore = [];
+    var scores = [];
     var imageUrl = $('#image-url').val();
-    var friendName = $('#friend-name').val();
+    var friendName = $('#name').val();
     console.log('submitted');
-    for (var i = 0; i < questions.length; i++) {
-      friendScore.push($('#questions').eq(i).eq(1).val());
+    for (var i = 0; i < $('.rd-button:checked').length; i ++) {
+      scores.push($('.rd-button:checked').eq(i).val())
     }
     
-    $.post('/friends', { friendName: friendName, imageUrl: imageUrl, friendScore: friendScore }, function () { 
-      console.log('Should get the best friend match back and display modal');
-    })
+    if (scores.length < 9) {
+      throwErrorModal();
+    } else {
+      var postObj = { friendName: friendName, imageUrl: imageUrl, scores: scores };
+
+      console.log(postObj);
+
+      $.post('/api/friends', postObj).done(function () { 
+        console.log('Should get the best friend match back and display modal');
+      });
+
+    }
+    e.preventDefault();
   })
 
 })

@@ -17,6 +17,7 @@ function htmlRoutes(app) {
   app.use('/js', express.static(path.join(__dirname, '../../node_modules/jquery/dist'))); // JS jQuery
   app.use('/js', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/js'))); // JS bootstrap
   app.use('/css', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/css'))); // CSS bootstrap
+  // Listen for requests on '/' ans '/survery'
   app.get('/', home);
   app.get('/survey', survey);
 }
