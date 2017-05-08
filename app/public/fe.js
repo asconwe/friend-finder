@@ -27,20 +27,17 @@ $(document).ready(function () {
     var scores = [];
     var imageUrl = $('#image-url').val();
     var friendName = $('#name').val();
-    console.log('submitted');
+
     for (var i = 0; i < $('.rd-button:checked').length; i ++) {
       scores.push($('.rd-button:checked').eq(i).val())
     }
     
-    if (scores.length < 9) {
+    console.log($('#name').val());
+    if (scores.length < questions.length || $('#name').val() === '' || $('#image-url').val() === '') {
       throwErrorModal();
     } else {
       var postObj = { friendName: friendName, imageUrl: imageUrl, scores: scores };
-
-      console.log(postObj);
-
       $.post('/api/friends', postObj).done(function (data) { 
-        console.log(data);
         showFriendModal(data.friendName, data.imageUrl);
       });
 
