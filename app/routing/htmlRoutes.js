@@ -12,6 +12,11 @@ function survey(req, res) {
 }
 
 function htmlRoutes(app) {
+  // Make public folder, jquery, and bootstrap available to front-end
+  app.use('/public', express.static(path.join(__dirname, '../public'))); // Public folder
+  app.use('/js', express.static(path.join(__dirname, '../../node_modules/jquery/dist'))); // JS jQuery
+  app.use('/js', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/js'))); // JS bootstrap
+  app.use('/css', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/css'))); // CSS bootstrap
   app.get('/', home);
   app.get('/survey', survey);
 }
