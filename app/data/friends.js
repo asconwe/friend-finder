@@ -1,7 +1,7 @@
 var friends = {
   postFriends: postFriends,
   getFriends: getFriends,
-  friendsList: [];
+  friendsList: []
 }
 
 function showBestFriend(res, bestFriend) {

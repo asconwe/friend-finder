@@ -3,16 +3,16 @@ var path = require('path');
 
 function home(req, res) {    
   console.log('home');
-  res.sendFile(path.join(__dirname, 'app/public/home.html'));
+  res.sendFile(path.join(__dirname, '../public/home.html'));
 }
 
 function survey(req, res) {
-  res.sendFile('/survey.html');
+  console.log('ab');
+  res.sendFile(path.join(__dirname, '../public/survey.html'));
 }
 
 function htmlRoutes(app) {
-  app.use('/', home);
-//   app.get('/', home);
+  app.get('/', home);
   app.get('/survey', survey);
 }
 
